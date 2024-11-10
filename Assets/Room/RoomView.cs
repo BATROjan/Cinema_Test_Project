@@ -51,6 +51,28 @@ public class RoomView : MonoBehaviour
         uiWindow.AddScreen.OnClick += AddScreen;
         uiWindow.AddSound.OnClick += AddSound;
         uiWindow.AddLight.OnClick += AddLight;
+        uiWindow.TurnOn.OnClick += TurnOn;
+        uiWindow.TurnOff.OnClick += TurnOff;
+    }
+
+    private void TurnOff()
+    {
+        uiWindow.TurnOn.gameObject.SetActive(true);
+        uiWindow.TurnOff.gameObject.SetActive(false);
+        foreach (var view in _lampViews)
+        {
+            view.Light.enabled = false;
+        }
+    }
+
+    private void TurnOn()
+    {
+        uiWindow.TurnOff.gameObject.SetActive(true);
+        uiWindow.TurnOn.gameObject.SetActive(false);
+        foreach (var view in _lampViews)
+        {
+            view.Light.enabled = true;
+        }
     }
 
     private void AddLight()
@@ -62,6 +84,7 @@ public class RoomView : MonoBehaviour
             
             _lampViews.Add(view);
         }
+        uiWindow.TurnOff.gameObject.SetActive(true);
         uiWindow.AddLight.OnClick -= AddLight;
     }
 

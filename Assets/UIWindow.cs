@@ -17,5 +17,7 @@ public class UIWindow : MonoBehaviour
     public UIButton AddScreen;
     public UIButton AddSound;
     public UIButton AddLight;
+    public UIButton TurnOn;
+    public UIButton TurnOff;
     public UIButton RemoveButton;
 }
