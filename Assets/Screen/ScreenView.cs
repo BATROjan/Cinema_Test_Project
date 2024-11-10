@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace Screen
 {
-    public class ScreenView : MonoBehaviour
+    public class ScreenView : ControllElement
     {
         public Transform ScreenTranform;
     }

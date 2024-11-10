@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace Sound
 {
-    public class SpeakerView : MonoBehaviour
+    public class SpeakerView : ControllElement
     {
         
     }

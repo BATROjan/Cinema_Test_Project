@@ -486,7 +486,6 @@ GameObject:
   - component: {fileID: 163362763}
   - component: {fileID: 163362762}
   - component: {fileID: 163362765}
-  - component: {fileID: 163362766}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -585,19 +584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScreenTranform: {fileID: 163362761}
---- !u!65 &163362766
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163362760}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &247826338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2598,7 @@ GameObject:
   - component: {fileID: 1153828536}
   - component: {fileID: 1153828535}
   - component: {fileID: 1153828534}
+  - component: {fileID: 1153828537}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2669,6 +2656,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153828537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153828533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf79c0e177f83d648abdbff4aea226ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 963194227}
+  CurrentElement: {fileID: 0}
 --- !u!1 &1154469234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,6 +3308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99bb151c5ff03343ae79a73d19133e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectIdentifier: {fileID: 1153828537}
   frontWall: {fileID: 1737162181}
   backWall: {fileID: 1896923529}
   leftWall: {fileID: 266355715}
@@ -4376,8 +4378,8 @@ MonoBehaviour:
   AddScreen: {fileID: 1684259987}
   AddSound: {fileID: 343952124}
   AddLight: {fileID: 734755436}
-  TurnOn: {fileID: 0}
-  TurnOff: {fileID: 0}
+  TurnOn: {fileID: 2017234731}
+  TurnOff: {fileID: 1900996119}
   RemoveButton: {fileID: 724291379}
 --- !u!1 &1851067719
 GameObject:

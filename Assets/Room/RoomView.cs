@@ -9,6 +9,8 @@ using UnityEngine.Serialization;
 
 public class RoomView : MonoBehaviour
 {
+    [SerializeField] private ObjectIdentifier objectIdentifier;
+    
     [Header("Room Settings")]
     [SerializeField] private WallView frontWall; 
     [SerializeField] private WallView backWall; 
@@ -53,6 +55,42 @@ public class RoomView : MonoBehaviour
         uiWindow.AddLight.OnClick += AddLight;
         uiWindow.TurnOn.OnClick += TurnOn;
         uiWindow.TurnOff.OnClick += TurnOff;
+        uiWindow.RemoveButton.OnClick += RemoveElement;
+    }
+
+    private void RemoveElement()
+    {
+        if (objectIdentifier.CurrentElement)
+        {
+            if (objectIdentifier.CurrentElement.GetComponent<ScreenView>())
+            {
+                Destroy(objectIdentifier.CurrentElement.gameObject);
+                uiWindow.AddScreen.OnClick += AddScreen;
+                return;
+            } 
+            if (objectIdentifier.CurrentElement.GetComponent<SpeakerView>())
+            {
+                foreach (var view in _speakerViews)
+                {
+                    Destroy(view.gameObject);
+                }
+                _speakerViews.Clear();
+                uiWindow.AddSound.OnClick += AddSound;
+                return;
+            }
+            if (objectIdentifier.CurrentElement.GetComponent<LampView>())
+            {
+                foreach (var view in _lampViews)
+                {
+                    Destroy(view.gameObject);
+                }
+                _lampViews.Clear();
+                
+                uiWindow.AddLight.OnClick += AddLight;
+                uiWindow.TurnOn.gameObject.SetActive(false);
+                uiWindow.TurnOff.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void TurnOff()
