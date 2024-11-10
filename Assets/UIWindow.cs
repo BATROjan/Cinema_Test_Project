@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class UIWindow : MonoBehaviour
 {
     public InputField RoomLenghtField;
-    public InputField RoomWinghtField;
+    public InputField RoomWinghtField;  
+    public InputField RoomHeightField;
     public UIButton ChangeRoomSizeUIButton;
     
     public InputField ScreenLenghtField;

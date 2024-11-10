@@ -14,10 +14,9 @@ public class RoomView : MonoBehaviour
     [SerializeField] private WallView backWall; 
     [SerializeField] private WallView leftWall; 
     [SerializeField] private WallView rightWall;
-    [SerializeField] private WallView floorWalls;
+    [SerializeField] private WallView floorWall;
     
     [SerializeField] private float wallsWinght = 0.2f;
-    [SerializeField] private float wallsHeight = 3f;
     
     [Header("Screen Settings")]
     [SerializeField] private ScreenView screenView;
@@ -28,21 +27,42 @@ public class RoomView : MonoBehaviour
     [SerializeField] private SpeakerView speakerView;
     [SerializeField] private GameObject viewerPivot;
     
+    [Header("Light Settings")]
+    [SerializeField] private GameObject[] lightPivots;
+    [SerializeField] private LampView lampView;
+    
     [Header("UI Settings")]
     [SerializeField] private UIWindow uiWindow;
 
     private List<SpeakerView> _speakerViews = new List<SpeakerView>();
+    private List<LampView> _lampViews = new List<LampView>();
     
     private float _currentLenght;
     private float _currentWinght;
+    private float _currentHieght;
+    
     private float _lenghtWallsPosition;
     private float _winghtWallsPosition;
+    private float _floorPosition;
     private float _ofset;
     void Start()
     {
         uiWindow.ChangeRoomSizeUIButton.OnClick += ChangeRoomSize;
         uiWindow.AddScreen.OnClick += AddScreen;
         uiWindow.AddSound.OnClick += AddSound;
+        uiWindow.AddLight.OnClick += AddLight;
+    }
+
+    private void AddLight()
+    {
+        foreach (var pivot in lightPivots)
+        {
+            var view = Instantiate(lampView);
+            view.transform.position = pivot.transform.position;
+            
+            _lampViews.Add(view);
+        }
+        uiWindow.AddLight.OnClick -= AddLight;
     }
 
     private void AddSound()
@@ -103,22 +123,30 @@ public class RoomView : MonoBehaviour
                 _speakerViews[i].transform.position = speakerPivots[i].transform.position;
                 _speakerViews[i].transform.LookAt(viewerPivot.transform);
             } 
+        }  
+        if (_lampViews.Count > 0)
+        {
+            for (int i = 0; i < _lampViews.Count; i++)
+            {
+                _lampViews[i].transform.position = lightPivots[i].transform.position;
+            } 
         }
         screenView.ScreenTranform.position = screenPivot.transform.position;
-        floorWalls.WallTransform.localScale = new Vector3(_currentWinght, wallsWinght, _currentLenght);
+        floorWall.WallTransform.localScale = new Vector3(_currentWinght, wallsWinght, _currentLenght);
+        floorWall.WallTransform.position = new Vector3(0, -_floorPosition, 0);
     }
 
     private void ChangeWindhtRoom(WallView wallView, int value)
     {
         wallView.WallTransform.localScale = 
-            new Vector3(_currentWinght,wallsHeight,wallsWinght);
+            new Vector3(_currentWinght,_currentHieght,wallsWinght);
         wallView.WallTransform.position = new Vector3( 0, 0,value * _winghtWallsPosition);
     }
 
     private void ChangeLenghtRoom(WallView wallView, int value)
     {
         wallView.WallTransform.localScale = 
-            new Vector3(wallsWinght,wallsHeight,_currentLenght);
+            new Vector3(wallsWinght,_currentHieght,_currentLenght);
         wallView.WallTransform.position = new Vector3(value * _lenghtWallsPosition,0, 0);
     }
 
@@ -126,10 +154,14 @@ public class RoomView : MonoBehaviour
     {
         _ofset = wallsWinght / 2;
         
-        _lenghtWallsPosition = float.Parse(uiWindow.RoomWinghtField.text) / 2 + _ofset;
-        _winghtWallsPosition = float.Parse(uiWindow.RoomLenghtField.text) / 2 + _ofset;
-        
-        _currentLenght = float.Parse(uiWindow.RoomLenghtField.text);
-        _currentWinght = float.Parse(uiWindow.RoomWinghtField.text);
+         _currentLenght = float.Parse(uiWindow.RoomLenghtField.text);
+         _currentWinght = float.Parse(uiWindow.RoomWinghtField.text);
+         _currentHieght = float.Parse(uiWindow.RoomHeightField.text);
+                
+        _lenghtWallsPosition = _currentWinght / 2 + _ofset;
+        _winghtWallsPosition = _currentLenght / 2 + _ofset;
+        _floorPosition = _currentHieght / 2 + _ofset;
+
+
     }
 }
