@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &85275961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 163362764}
   - component: {fileID: 163362763}
   - component: {fileID: 163362762}
+  - component: {fileID: 163362765}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -498,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163362760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_LocalScale: {x: 3, y: 2, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -568,6 +569,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163362760}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &163362765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163362760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20832b22b01e4911806268eba10c1b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScreenTranform: {fileID: 163362761}
 --- !u!1 &266355714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,7 +2378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1208826195
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2590,7 +2604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1480796956
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2687,6 +2701,7 @@ MonoBehaviour:
   leftWall: {fileID: 266355715}
   rightWall: {fileID: 691185756}
   floorWalls: {fileID: 1103392939}
+  screenView: {fileID: 163362765}
   uiWindow: {fileID: 1840867758}
   wallsWinght: 0.2
   wallsHeight: 3
@@ -2729,7 +2744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1577290787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3168,7 +3183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1684259986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3649,7 +3664,10 @@ MonoBehaviour:
   RoomWinghtField: {fileID: 1667117492}
   ChangeRoomSizeUIButton: {fileID: 423503762}
   ScreenLenghtField: {fileID: 1208826196}
-  SreenWinghtField: {fileID: 85275962}
+  ScreenWinghtField: {fileID: 85275962}
+  ScreenSizeText:
+  - {fileID: 1480796957}
+  - {fileID: 1851067721}
   ChangeScreenSizeUIButton: {fileID: 1577290788}
   AddScreen: {fileID: 1684259987}
   AddSound: {fileID: 343952124}
@@ -3672,7 +3690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1851067720
 RectTransform:
   m_ObjectHideFlags: 0

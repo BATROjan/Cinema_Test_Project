@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIWindow : MonoBehaviour
@@ -8,7 +9,8 @@ public class UIWindow : MonoBehaviour
     public UIButton ChangeRoomSizeUIButton;
     
     public InputField ScreenLenghtField;
-    public InputField SreenWinghtField;
+    public InputField ScreenWinghtField;
+    public Text[] ScreenSizeText;
     public UIButton ChangeScreenSizeUIButton;
 
     public UIButton AddScreen;
